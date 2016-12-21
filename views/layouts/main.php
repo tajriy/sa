@@ -68,7 +68,7 @@
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; SIA <?=date('Y')?></p>
-
+test
         <p class="pull-right"></p>
     </div>
 </footer>
