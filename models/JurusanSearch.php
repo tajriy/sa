@@ -19,7 +19,7 @@ class JurusanSearch extends Jurusan
     {
         return [
             [['id_jurusan'], 'integer'],
-            [['nama_jurusan'], 'safe'],
+            [['nama_jurusan', 'singkatan'], 'safe'],
         ];
     }
 
@@ -62,7 +62,8 @@ class JurusanSearch extends Jurusan
             'id_jurusan' => $this->id_jurusan,
         ]);
 
-        $query->andFilterWhere(['like', 'nama_jurusan', $this->nama_jurusan]);
+        $query->andFilterWhere(['like', 'nama_jurusan', $this->nama_jurusan])
+            ->andFilterWhere(['like', 'singkatan', $this->singkatan]);
 
         return $dataProvider;
     }

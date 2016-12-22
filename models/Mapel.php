@@ -11,6 +11,13 @@ use Yii;
  * @property string $nama_mapel
  * @property string $keterangan
  * @property integer $kkm
+ * @property integer $id_kurikulum
+ * @property integer $semester
+ *
+ * @property TblGuru[] $tblGurus
+ * @property TblKurikulum $idKurikulum
+ * @property TblNilai[] $tblNilais
+ * @property TblTugas[] $tblTugas
  */
 class Mapel extends \yii\db\ActiveRecord
 {
@@ -28,10 +35,11 @@ class Mapel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_mapel', 'keterangan', 'kkm'], 'required'],
+            [['nama_mapel', 'keterangan', 'kkm', 'id_kurikulum'], 'required'],
             [['keterangan'], 'string'],
-            [['kkm'], 'integer'],
+            [['kkm', 'id_kurikulum', 'semester'], 'integer'],
             [['nama_mapel'], 'string', 'max' => 42],
+            [['id_kurikulum'], 'exist', 'skipOnError' => true, 'targetClass' => Kurikulum::className(), 'targetAttribute' => ['id_kurikulum' => 'id_kurikulum']],
         ];
     }
 
@@ -45,6 +53,40 @@ class Mapel extends \yii\db\ActiveRecord
             'nama_mapel' => 'Nama Mapel',
             'keterangan' => 'Keterangan',
             'kkm' => 'Kkm',
+            'id_kurikulum' => 'Id Kurikulum',
+            'semester' => 'Semester',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTblGurus()
+    {
+        return $this->hasMany(TblGuru::className(), ['keahlian' => 'id_mapel']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdKurikulum()
+    {
+        return $this->hasOne(TblKurikulum::className(), ['id_kurikulum' => 'id_kurikulum']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTblNilais()
+    {
+        return $this->hasMany(TblNilai::className(), ['id_mapel' => 'id_mapel']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTblTugas()
+    {
+        return $this->hasMany(TblTugas::className(), ['id_mapel' => 'id_mapel']);
     }
 }

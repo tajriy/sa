@@ -1,5 +1,5 @@
 <?php
-    use app\models\Kelas;
+    use app\models\Jurusan;
     use app\models\TingkatKelas;
     use yii\helpers\Html;
     use yii\widgets\ActiveForm;
@@ -16,7 +16,7 @@
 
     <?=$form->field($model , 'id_tingkat')->dropDownList(ArrayHelper::map(TingkatKelas::find()->all() , 'id_tingkat' ,
         'nama_tingkat'), ['prompt' => 'Pilih Tingkat Kelas'] );?>
-    <?=$form->field($model , 'id_jurusan')->dropDownList(ArrayHelper::map(Kelas::find()->all() , 'id_jurusan' ,
+    <?=$form->field($model , 'id_jurusan')->dropDownList(ArrayHelper::map(Jurusan::find()->all() , 'id_jurusan' ,
         'nama_jurusan') , ['prompt' => 'Pilih Jurusan']);?>
     <?=$form->field($model , 'nama_kelas')->textInput(['maxlength' => TRUE])?>
 

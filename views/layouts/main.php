@@ -43,8 +43,32 @@
                     'url'   => ['/site/about'] ,
                 ] ,
                 [
-                    'label' => 'Contact' ,
-                    'url'   => ['/site/contact'] ,
+                    'label' => 'Jurusan' ,
+                    'url'   => ['/jurusan'] ,
+                ],
+                [
+                    'label' => 'Tingkat' ,
+                    'url'   => ['/tingkat-kelas'] ,
+                ] ,
+                [
+                    'label' => 'Kelas' ,
+                    'url'   => ['/kelas'] ,
+                ] ,
+                [
+                    'label' => 'Kurikulum' ,
+                    'url'   => ['/kurikulum'] ,
+                ] ,
+                [
+                    'label' => 'Mapel' ,
+                    'url'   => ['/mapel'] ,
+                ] ,
+                [
+                    'label' => 'Siswa' ,
+                    'url'   => ['/siswa'] ,
+                ] ,
+                [
+                    'label' => 'Guru' ,
+                    'url'   => ['/guru'] ,
                 ] ,
                 Yii::$app->user->isGuest ? ([
                     'label' => 'Login' ,

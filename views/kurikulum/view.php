@@ -29,10 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id_kurikulum',
-            'nip',
-            'id_kelas',
-            'id_mapel',
-            'id_tahun_ajaran',
+            'tahun',
+            'keterangan',
         ],
     ]) ?>
 

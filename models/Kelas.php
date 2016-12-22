@@ -41,8 +41,8 @@ class Kelas extends \yii\db\ActiveRecord
     {
         return [
             'id_kelas' => 'Id Kelas',
-            'id_tingkat' => 'Id Tingkat',
-            'id_jurusan' => 'Id Jurusan',
+            'id_tingkat' => 'Tingkat',
+            'id_jurusan' => 'Jurusan',
             'nama_kelas' => 'Nama Kelas',
         ];
     }

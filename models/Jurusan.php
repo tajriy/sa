@@ -9,6 +9,9 @@ use Yii;
  *
  * @property integer $id_jurusan
  * @property string $nama_jurusan
+ * @property string $singkatan
+ *
+ * @property TblKelas[] $tblKelas
  */
 class Jurusan extends \yii\db\ActiveRecord
 {
@@ -26,8 +29,9 @@ class Jurusan extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_jurusan'], 'required'],
-            [['nama_jurusan'], 'string', 'max' => 15],
+            [['nama_jurusan', 'singkatan'], 'required'],
+            [['nama_jurusan'], 'string', 'max' => 50],
+            [['singkatan'], 'string', 'max' => 5],
         ];
     }
 
@@ -39,6 +43,15 @@ class Jurusan extends \yii\db\ActiveRecord
         return [
             'id_jurusan' => 'Id Jurusan',
             'nama_jurusan' => 'Nama Jurusan',
+            'singkatan' => 'Singkatan',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTblKelas()
+    {
+        return $this->hasMany(TblKelas::className(), ['id_jurusan' => 'id_jurusan']);
     }
 }

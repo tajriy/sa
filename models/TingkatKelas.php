@@ -8,7 +8,9 @@ use Yii;
  * This is the model class for table "tbl_tingkat_kelas".
  *
  * @property integer $id_tingkat
- * @property integer $nama_tingkat
+ * @property string $nama_tingkat
+ *
+ * @property TblKelas[] $tblKelas
  */
 class TingkatKelas extends \yii\db\ActiveRecord
 {
@@ -26,8 +28,9 @@ class TingkatKelas extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_tingkat'], 'required'],
-            [['id_tingkat', 'nama_tingkat'], 'integer'],
+            [['id_tingkat', 'nama_tingkat'], 'required'],
+            [['id_tingkat'], 'integer'],
+            [['nama_tingkat'], 'string', 'max' => 3],
         ];
     }
 
@@ -40,5 +43,13 @@ class TingkatKelas extends \yii\db\ActiveRecord
             'id_tingkat' => 'Id Tingkat',
             'nama_tingkat' => 'Nama Tingkat',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTblKelas()
+    {
+        return $this->hasMany(TblKelas::className(), ['id_tingkat' => 'id_tingkat']);
     }
 }

@@ -28,7 +28,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'tgl_lahir')->textInput() ?>
 
-    <?= $form->field($model, 'id_keahlian')->textInput() ?>
+    <?= $form->field($model, 'keahlian')->textInput() ?>
 
     <?= $form->field($model, 'pendidikan')->textInput() ?>
 

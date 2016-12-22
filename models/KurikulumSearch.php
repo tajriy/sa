@@ -18,7 +18,8 @@ class KurikulumSearch extends Kurikulum
     public function rules()
     {
         return [
-            [['id_kurikulum', 'nip', 'id_kelas', 'id_mapel', 'id_tahun_ajaran'], 'integer'],
+            [['id_kurikulum'], 'integer'],
+            [['tahun', 'keterangan'], 'safe'],
         ];
     }
 
@@ -59,11 +60,10 @@ class KurikulumSearch extends Kurikulum
         // grid filtering conditions
         $query->andFilterWhere([
             'id_kurikulum' => $this->id_kurikulum,
-            'nip' => $this->nip,
-            'id_kelas' => $this->id_kelas,
-            'id_mapel' => $this->id_mapel,
-            'id_tahun_ajaran' => $this->id_tahun_ajaran,
+            'tahun' => $this->tahun,
         ]);
+
+        $query->andFilterWhere(['like', 'keterangan', $this->keterangan]);
 
         return $dataProvider;
     }

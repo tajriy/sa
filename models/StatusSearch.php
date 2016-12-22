@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Guru;
+use app\models\Status;
 
 /**
- * GuruSearch represents the model behind the search form about `app\models\Guru`.
+ * StatusSearch represents the model behind the search form about `app\models\Status`.
  */
-class GuruSearch extends Guru
+class StatusSearch extends Status
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class GuruSearch extends Guru
     public function rules()
     {
         return [
-            [['nip', 'nomor_hp', 'id_status', 'keahlian', 'pendidikan'], 'integer'],
-            [['nama_guru', 'alamat', 'email', 'password', 'tgl_lahir'], 'safe'],
+            [['id_status'], 'integer'],
+            [['nama_status'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class GuruSearch extends Guru
      */
     public function search($params)
     {
-        $query = Guru::find();
+        $query = Status::find();
 
         // add conditions that should always apply here
 
@@ -59,18 +59,10 @@ class GuruSearch extends Guru
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'nip' => $this->nip,
-            'nomor_hp' => $this->nomor_hp,
             'id_status' => $this->id_status,
-            'tgl_lahir' => $this->tgl_lahir,
-            'keahlian' => $this->keahlian,
-            'pendidikan' => $this->pendidikan,
         ]);
 
-        $query->andFilterWhere(['like', 'nama_guru', $this->nama_guru])
-            ->andFilterWhere(['like', 'alamat', $this->alamat])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'password', $this->password]);
+        $query->andFilterWhere(['like', 'nama_status', $this->nama_status]);
 
         return $dataProvider;
     }

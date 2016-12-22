@@ -4,22 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\KurikulumSearch */
+/* @var $model app\models\StatusSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="kurikulum-search">
+<div class="status-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id_kurikulum') ?>
+    <?= $form->field($model, 'id_status') ?>
 
-    <?= $form->field($model, 'tahun') ?>
-
-    <?= $form->field($model, 'keterangan') ?>
+    <?= $form->field($model, 'nama_status') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

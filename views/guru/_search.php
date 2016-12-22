@@ -31,7 +31,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'tgl_lahir') ?>
 
-    <?php // echo $form->field($model, 'id_keahlian') ?>
+    <?php // echo $form->field($model, 'keahlian') ?>
 
     <?php // echo $form->field($model, 'pendidikan') ?>
 

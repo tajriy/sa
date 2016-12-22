@@ -4,17 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Kurikulum */
+/* @var $model app\models\Status */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="kurikulum-form">
+<div class="status-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'tahun')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'keterangan')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nama_status')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

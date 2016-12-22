@@ -18,7 +18,7 @@ class MapelSearch extends Mapel
     public function rules()
     {
         return [
-            [['id_mapel', 'kkm'], 'integer'],
+            [['id_mapel', 'kkm', 'id_kurikulum', 'semester'], 'integer'],
             [['nama_mapel', 'keterangan'], 'safe'],
         ];
     }
@@ -61,6 +61,8 @@ class MapelSearch extends Mapel
         $query->andFilterWhere([
             'id_mapel' => $this->id_mapel,
             'kkm' => $this->kkm,
+            'id_kurikulum' => $this->id_kurikulum,
+            'semester' => $this->semester,
         ]);
 
         $query->andFilterWhere(['like', 'nama_mapel', $this->nama_mapel])
