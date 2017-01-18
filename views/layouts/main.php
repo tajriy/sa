@@ -25,58 +25,54 @@
 <div class="wrap">
     <?php
         NavBar::begin([
-            'brandLabel' => 'SIA' ,
+            'brandLabel' => 'EES' ,
             'brandUrl'   => Yii::$app->homeUrl ,
             'options'    => [
                 'class' => 'navbar-inverse navbar-fixed-top' ,
             ] ,
         ]);
+        $menu = isset(Yii::$app->user->identity->username) ? [
+            [
+                'label' => 'Home' ,
+                'url'   => ['/site/index'] ,
+            ] ,
+            [
+                'label' => 'Penyakit' ,
+                'url'   => ['/penyakit'] ,
+            ] ,
+            [
+                'label' => 'Gejala' ,
+                'url'   => ['/gejala'] ,
+            ] ,
+            [
+                'label' => 'Rules' ,
+                'url'   => ['/rules'] ,
+            ] ,
+            [
+                'label' => 'User' ,
+                'url'   => ['/user'] ,
+            ] ,
+            Yii::$app->user->isGuest ? ([
+                'label' => 'Login' ,
+                'url'   => ['/site/login'] ,
+            ]) : ('<li>' . Html::beginForm(['/site/logout'] , 'post') .
+                Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')' ,
+                    ['class' => 'btn btn-link logout']) . Html::endForm() . '</li>') ,
+        ] : [
+            [
+                'label' => 'Home' ,
+                'url'   => ['/site/index'] ,
+            ] ,
+            Yii::$app->user->isGuest ? ([
+                'label' => 'Login' ,
+                'url'   => ['/site/login'] ,
+            ]) : ('<li>' . Html::beginForm(['/site/logout'] , 'post') .
+                Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')' ,
+                    ['class' => 'btn btn-link logout']) . Html::endForm() . '</li>') ,
+        ];
         echo Nav::widget([
             'options' => ['class' => 'navbar-nav navbar-right'] ,
-            'items'   => [
-                [
-                    'label' => 'Home' ,
-                    'url'   => ['/site/index'] ,
-                ] ,
-                [
-                    'label' => 'About' ,
-                    'url'   => ['/site/about'] ,
-                ] ,
-                [
-                    'label' => 'Jurusan' ,
-                    'url'   => ['/jurusan'] ,
-                ],
-                [
-                    'label' => 'Tingkat' ,
-                    'url'   => ['/tingkat-kelas'] ,
-                ] ,
-                [
-                    'label' => 'Kelas' ,
-                    'url'   => ['/kelas'] ,
-                ] ,
-                [
-                    'label' => 'Kurikulum' ,
-                    'url'   => ['/kurikulum'] ,
-                ] ,
-                [
-                    'label' => 'Mapel' ,
-                    'url'   => ['/mapel'] ,
-                ] ,
-                [
-                    'label' => 'Siswa' ,
-                    'url'   => ['/siswa'] ,
-                ] ,
-                [
-                    'label' => 'Guru' ,
-                    'url'   => ['/guru'] ,
-                ] ,
-                Yii::$app->user->isGuest ? ([
-                    'label' => 'Login' ,
-                    'url'   => ['/site/login'] ,
-                ]) : ('<li>' . Html::beginForm(['/site/logout'] , 'post') .
-                    Html::submitButton('Logout (' . Yii::$app->user->identity->username . ')' ,
-                        ['class' => 'btn btn-link logout']) . Html::endForm() . '</li>') ,
-            ] ,
+            'items'   => $menu ,
         ]);
         NavBar::end();
     ?>
@@ -90,13 +86,32 @@
 </div>
 
 <footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; SIA <?=date('Y')?></p>
-test
-        <p class="pull-right"></p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h5 class="text-primary">Eyes Expert System (EES)</h5>
+                <p class="grey-text text-lighten-4">Merupakan suatu sistem pakar mata yang digunakan untuk
+                    mengidentifikasi penyakit pada mata. Dalam pembuatan sistem ini menggunakan metode forward chaining
+                    dan fuzzy Sugeno</p>
+            </div>
+            <div class="col-md-2">
+                <h5 class="text-primary">Anggota Kelompok</h5>
+                <ul class="list-unstyled">
+                    <li>Rianto Anggara Putra</li>
+                    <li>Tama Asrory Ridhana</li>
+                    <li>Ulfah Adzkia</li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <div class="footer-copyright"><br>
+                        &copy; <?=date('Y')?> Sistem Pakar
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
     </div>
 </footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

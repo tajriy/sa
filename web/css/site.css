@@ -4,21 +4,22 @@ body {
 }
 
 .wrap {
-    min-height: 100%;
+    /*min-height: 100%;*/
     height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+    margin: 0 auto 0px;
+    padding: 0 0 0px;
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+    padding: 70px 15px 10px;
 }
 
 .footer {
-    height: 60px;
+    /*height: 60px;*/
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
+    padding-bottom: 7px;
 }
 
 .jumbotron {
@@ -96,9 +97,9 @@ a.desc:after {
     border: none;
 }
 
-@media(max-width:767px) {
+@media (max-width: 767px) {
     .nav li > form > button.logout {
-        display:block;
+        display: block;
         text-align: left;
         width: 100%;
         padding: 10px 15px;
@@ -112,4 +113,51 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.navbar-inverse {
+    background-color: #259b24 !important;
+    border-color: #259b24 !important;
+}
+
+.navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #FFFFFF1A !important;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #259b24 !important;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #FFFFFF1A !important;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff !important;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #FFFFFF1A !important;
+}
+
+.navbar-inverse .btn-link {
+    color: #fff !important;
+}
+
+.nav li > form > button.logout {
+    background-color: #FFFFFF1A;
+    text-transform: capitalize !important;
+}
+
+.nav li > form > button.logout:hover {
+    border-radius: 50px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #FFFFFF1A !important;
 }
